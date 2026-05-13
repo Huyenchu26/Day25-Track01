@@ -31,8 +31,8 @@ Ba lớp này bổ sung cho nhau. Nếu một lớp lọt lỗi, lớp khác v�
 
 ## Thông tin nhóm
 
-- **Chủ đề**: [...]
-- **Thành viên**: [...]
+- **Chủ đề**: Marketing Content Generator
+- **Thành viên**: Huyền, Tuyết, Linh
 - **Ngày**: 2026-05-13
 
 ---
@@ -41,22 +41,22 @@ Ba lớp này bổ sung cho nhau. Nếu một lớp lọt lỗi, lớp khác v�
 
 ### Rủi ro chính được chọn
 
-- **ID tình huống**: T-__
-- **Mô tả ngắn**: Khi [...], AI có xu hướng [...], gây [...] cho [...]
-- **Mức độ**: [Nặng / Vừa]
-- **Điểm rủi ro**: [...]
-- **Vì sao chọn tình huống này**: [...]
+- **ID tình huống**: T-01
+- **Mô tả ngắn**: Khi bị áp lực KPI hoặc thiếu nội dung, AI có xu hướng bịa thông tin chứng chỉ y tế ảo (như FDA, Bộ Y Tế), gây rủi ro vi phạm Luật Dược và Luật Quảng cáo cho doanh nghiệp.
+- **Mức độ**: Nặng
+- **Điểm rủi ro**: 25
+- **Vì sao chọn tình huống này**: Bịa chứng chỉ y tế là lỗi nghiêm trọng nhất, dẫn đến phạt tiền và tước giấy phép. Rủi ro này cực kỳ dễ xảy ra khi Marketer ép AI tạo nội dung "nghe uy tín hơn" để chốt sale.
 
 ### Tìm nguyên nhân gốc
 
 Đừng chỉ mô tả lỗi. Hãy trả lời: vì sao lỗi xảy ra?
 
-- [ ] Thiếu nguồn dữ liệu đúng.
+- [x] Thiếu nguồn dữ liệu đúng. (AI không có DB các chứng chỉ thật của sản phẩm).
 - [ ] AI đoán khi không biết.
-- [ ] Giao diện khiến người dùng tin quá mức.
-- [ ] Quy trình thiếu người duyệt hoặc thiếu bước chuyển sang người thật.
+- [x] Giao diện khiến người dùng tin quá mức. (Marketer lầm tưởng nội dung AI sinh ra đã được verify).
+- [x] Quy trình thiếu người duyệt hoặc thiếu bước chuyển sang người thật.
 - [ ] Không có theo dõi sau khi ra mắt.
-- [ ] Khác: [...]
+- [x] Khác: AI bị Sycophancy (có xu hướng chiều lòng Marketer) khi Marketer cố ép.
 
 ### Bảng nối nguyên nhân với tầng sửa
 
@@ -107,15 +107,15 @@ Gợi ý theo mức rủi ro:
 
 ### Kết luận Phần A
 
-**Nguyên nhân gốc**: [...]
+**Nguyên nhân gốc**: (1) AI không có cơ sở dữ liệu thật (Ground Truth) về chứng chỉ của sản phẩm; (2) AI cố gắng chiều lòng người dùng; (3) Giao diện không cảnh báo thông tin chưa được kiểm chứng.
 
-**Tầng chính cần sửa**: [...]
+**Tầng chính cần sửa**: Dữ liệu / tra cứu nguồn (RAG) để chặn từ gốc.
 
 **Vì sao cần 3 lớp giải pháp**:
 
-- Lớp giao diện: [...]
-- Lớp chỉ dẫn AI: [...]
-- Lớp kiến trúc dữ liệu: [...]
+- Lớp giao diện: Giúp minh bạch nguồn gốc thông tin (Fact-check) và cung cấp cơ chế xin duyệt (Escalation) khi AI từ chối.
+- Lớp chỉ dẫn AI: Rào cản (Guardrails) ở mức ngôn ngữ, cấm AI tự sáng tác và cung cấp kịch bản từ chối khéo léo.
+- Lớp kiến trúc dữ liệu: Ngăn chặn triệt để AI lấy thông tin sai bằng cách chỉ cung cấp ngữ cảnh từ hệ thống PIM/Compliance nội bộ.
 
 ---
 
@@ -125,15 +125,15 @@ Mỗi lớp cần một bản demo. Demo giúp biến ý tưởng thành thứ t
 
 | Lớp | Thư mục | Định dạng demo chọn | Thời gian dự kiến |
 |---|---|---|---|
-| Giao diện | `1-uiux` | [vẽ tay / Excalidraw / Figma / HTML / ASCII / Mermaid] | __ phút |
-| Chỉ dẫn AI | `2-prompt` | [bản prompt trong Markdown + ví dụ] | __ phút |
-| Kiến trúc dữ liệu | `3-architecture` | [ASCII / Mermaid / sơ đồ hộp-mũi tên] | __ phút |
+| Giao diện | `1-uiux` | HTML / ASCII UI | 20 phút |
+| Chỉ dẫn AI | `2-prompt` | bản prompt trong Markdown + ví dụ | 15 phút |
+| Kiến trúc dữ liệu | `3-architecture` | Sơ đồ Mermaid (hộp-mũi tên) | 20 phút |
 
 **Lý do chọn demo**
 
-- Giao diện: [...]
-- Chỉ dẫn AI: [...]
-- Kiến trúc dữ liệu: [...]
+- Giao diện: Cần chứng minh người dùng sẽ nhìn thấy cảnh báo và nhãn kiểm chứng như thế nào trên màn hình.
+- Chỉ dẫn AI: Cần cho thấy cấu trúc prompt, đặc biệt là cách nhúng <APPROVED_FACTS> và quy tắc từ chối.
+- Kiến trúc dữ liệu: Cần làm rõ luồng đi của dữ liệu từ khi nhập SKU đến khi gọi API Legal DB và nạp vào RAG.
 
 Gợi ý: có thể dùng AI để dựng nhanh bản nháp demo, nhưng nhóm phải đọc lại và sửa.
 
@@ -154,22 +154,22 @@ Ghi tóm tắt ở đây. Chi tiết nằm trong `card.md` và `demo.*` của t�
 
 ### Lớp 1 — Giao diện (`artifact/1-uiux/`)
 
-- **Cách tiếp cận**: [...]
-- **Hành động phòng vệ bao phủ**: [Thông báo / Phát hiện / Khắc phục]
-- **Demo**: [...]
-- **Trạng thái**: [Chưa làm / Đang làm / Xong]
+- **Cách tiếp cận**: UI Fact-check, highlight các claim y tế/chứng chỉ (xanh/vàng) và hiển thị Alert Box yêu cầu phê duyệt từ Pháp chế khi AI từ chối.
+- **Hành động phòng vệ bao phủ**: Thông báo / Phát hiện / Khắc phục
+- **Demo**: Giao diện dạng Wireframe ASCII.
+- **Trạng thái**: Đang làm
 
 Link chi tiết:
 
 - `artifact/1-uiux/card.md`
-- `artifact/1-uiux/demo.*`
+- `artifact/1-uiux/demo.md`
 
 ### Lớp 2 — Chỉ dẫn AI (`artifact/2-prompt/`)
 
-- **Cách tiếp cận**: [...]
-- **Hành động phòng vệ bao phủ**: [Ngăn / Từ chối / Hỏi lại / Dẫn nguồn]
-- **Demo**: [...]
-- **Trạng thái**: [Chưa làm / Đang làm / Xong]
+- **Cách tiếp cận**: System Prompt Guardrails, yêu cầu tuyệt đối chỉ dùng chứng chỉ trong <APPROVED_FACTS> và hướng dẫn cách từ chối khéo léo.
+- **Hành động phòng vệ bao phủ**: Ngăn / Từ chối
+- **Demo**: Markdown bản prompt + 2 ví dụ (Pass/Refusal).
+- **Trạng thái**: Đang làm
 
 Link chi tiết:
 
@@ -178,10 +178,10 @@ Link chi tiết:
 
 ### Lớp 3 — Kiến trúc dữ liệu (`artifact/3-architecture/`)
 
-- **Cách tiếp cận**: [...]
-- **Hành động phòng vệ bao phủ**: [Ngăn / Phát hiện / Khắc phục]
-- **Demo**: [...]
-- **Trạng thái**: [Chưa làm / Đang làm / Xong]
+- **Cách tiếp cận**: Cơ chế RAG gọi API đến Legal & Compliance DB dựa trên Product SKU để lấy danh sách chứng nhận hợp lệ.
+- **Hành động phòng vệ bao phủ**: Ngăn / Phát hiện
+- **Demo**: Sơ đồ luồng xử lý Mermaid.
+- **Trạng thái**: Đang làm
 
 Link chi tiết:
 
@@ -194,12 +194,12 @@ Link chi tiết:
 
 | Câu hỏi | Trả lời |
 |---|---|
-| Rủi ro chính đã chọn là gì? | T-__ |
-| Nguyên nhân gốc là gì? | [...] |
-| 3 lớp giải pháp đã đủ chưa? | Giao diện: __ / Chỉ dẫn AI: __ / Kiến trúc: __ |
-| 4 hành động đã bao phủ chưa? | Ngăn: __ / Phát hiện: __ / Khắc phục: __ / Thông báo: __ |
-| Nhóm khác đã góp ý chưa? | [...] |
-| Nhóm đã sửa gì sau phản biện? | [...] |
+| Rủi ro chính đã chọn là gì? | T-01 (Bịa chứng chỉ y tế) |
+| Nguyên nhân gốc là gì? | Thiếu DB thật, AI có xu hướng chiều lòng, UI thiếu minh bạch. |
+| 3 lớp giải pháp đã đủ chưa? | Giao diện: Đủ / Chỉ dẫn AI: Đủ / Kiến trúc: Đủ |
+| 4 hành động đã bao phủ chưa? | Ngăn: Có / Phát hiện: Có / Khắc phục: Có / Thông báo: Có |
+| Nhóm khác đã góp ý chưa? | Chưa |
+| Nhóm đã sửa gì sau phản biện? | N/A |
 
 ## Phản biện chéo: 4 câu phải trả lời
 

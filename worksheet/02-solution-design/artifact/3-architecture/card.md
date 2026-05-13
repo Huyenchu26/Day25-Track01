@@ -6,36 +6,29 @@ demo: ./demo.md
 
 # card.md — Lớp kiến trúc dữ liệu
 
-**Tình huống xử lý**: T-__  
+**Tình huống xử lý**: T-01 (Bịa chứng chỉ y tế)  
 Xem `../../1-map-and-format.md` Phần A.
 
 ---
 
 ## 1. Giải pháp là gì?
 
-[Viết 2-3 câu. Nói rõ hệ thống cần thêm nguồn dữ liệu, bước kiểm tra, cách chuyển câu hỏi hoặc cách ghi lại lỗi nào.]
-
-Ví dụ:
-
-> Với câu hỏi về học bổng, hệ thống phải tra nguồn tuyển sinh chính thức trước khi AI trả lời. Nếu nguồn không có dữ liệu hoặc bị lỗi, AI không được đoán mà chuyển câu hỏi cho tư vấn viên.
+Xây dựng luồng RAG kết nối trực tiếp vào Legal & Compliance DB (hoặc hệ thống PIM) của doanh nghiệp. Hệ thống sẽ trích xuất mã sản phẩm (SKU) từ Brief, gọi API lấy danh sách chứng chỉ thật rồi nạp vào LLM trước khi sinh nội dung. Nếu DB không có chứng chỉ đó, AI không được phép viết.
 
 ---
 
 ## 2. Vì sao sửa ở lớp kiến trúc dữ liệu?
 
-[Chọn 1-2 ý đúng với giải pháp của nhóm.]
-
-- Nguyên nhân chính là thiếu nguồn đúng hoặc nguồn cũ.
+- Nguyên nhân chính là thiếu nguồn đúng (Ground Truth) khiến AI phải tự đoán thông tin y tế dựa trên dữ liệu mạng.
 - AI đang phải tự nhớ thông tin thay vì đọc từ nguồn đáng tin cậy.
-- Cần kiểm tra dữ liệu trước khi câu trả lời được tạo ra.
-- Cần ghi lại lỗi để nhóm biết lỗi nào lặp lại nhiều.
+- Cần kiểm tra chéo (Cross-check) dữ liệu đầu vào trước khi LLM thực sự sinh nội dung.
 
 **Hành động phòng vệ chính**:
 
-- [ ] Ngăn lỗi bằng nguồn dữ liệu đúng
-- [ ] Phát hiện khi nguồn thiếu hoặc lỗi
-- [ ] Khắc phục bằng cách chuyển sang người thật
-- [ ] Ghi lại lỗi để cải thiện sau
+- [x] Ngăn lỗi bằng nguồn dữ liệu đúng
+- [x] Phát hiện khi nguồn thiếu hoặc lỗi
+- [x] Khắc phục bằng cách chuyển sang người thật
+- [x] Ghi lại lỗi để cải thiện sau
 
 ---
 
@@ -57,20 +50,22 @@ Demo cần có:
 
 **Có thể gây vấn đề gì?**
 
-[Ví dụ: trả lời chậm hơn, phụ thuộc vào nguồn dữ liệu, tốn công duy trì, hệ thống phức tạp hơn.]
+**Có thể gây vấn đề gì?**
+
+Quá trình gọi API nội bộ làm tăng độ trễ (Latency) của hệ thống. Nếu Legal DB bảo trì, Content Pipeline sẽ bị đình trệ hoàn toàn. Việc cập nhật chứng chỉ mới phụ thuộc vào tốc độ nhập liệu của Phòng Pháp chế.
 
 **Nhóm giảm vấn đề đó bằng cách nào?**
 
-[Ví dụ: lưu tạm dữ liệu phổ biến, có thông báo khi nguồn lỗi, đặt người phụ trách cập nhật nguồn, giới hạn chỉ áp dụng với câu hỏi rủi ro cao.]
+Sử dụng cơ chế Caching (Redis) để lưu tạm dữ liệu của các sản phẩm đang chạy chiến dịch Marketing hiện tại. Cung cấp Fallback Message khi DB lỗi ("Hệ thống kiểm chứng đang gián đoạn, vui lòng duyệt nội dung cẩn thận").
 
 ---
 
 ## 5. Checklist trước khi nộp
 
-- [ ] Sơ đồ cho thấy dữ liệu đi từ đâu đến đâu.
-- [ ] Có bước kiểm tra nguồn trước khi AI trả lời.
-- [ ] Có cách xử lý khi không có dữ liệu.
-- [ ] Có cách chuyển sang người thật với tình huống rủi ro cao.
-- [ ] Có cách biết lỗi này có đang lặp lại không.
+- [x] Sơ đồ cho thấy dữ liệu đi từ đâu đến đâu.
+- [x] Có bước kiểm tra nguồn trước khi AI trả lời.
+- [x] Có cách xử lý khi không có dữ liệu.
+- [x] Có cách chuyển sang người thật với tình huống rủi ro cao.
+- [x] Có cách biết lỗi này có đang lặp lại không.
 
-**Người phụ trách**: [Tên thành viên]
+**Người phụ trách**: Hứa Quang Linh

@@ -6,35 +6,27 @@ demo: ./demo.md
 
 # card.md — Lớp chỉ dẫn AI
 
-**Tình huống xử lý**: T-__  
+**Tình huống xử lý**: T-01 (Bịa chứng chỉ y tế)  
 Xem `../../1-map-and-format.md` Phần A.
 
 ---
 
 ## 1. Giải pháp là gì?
 
-[Viết 2-3 câu. Nói rõ nhóm sẽ thêm luật, giới hạn hoặc ví dụ mẫu nào để AI trả lời an toàn hơn.]
-
-Ví dụ:
-
-> Khi người dùng hỏi ngày, số tiền hoặc chính sách tuyển sinh, AI chỉ được trả lời nếu có nguồn chính thức. Nếu thiếu nguồn, AI phải nói rõ là chưa xác minh được và chuyển cho tư vấn viên.
+Nhóm sẽ thiết kế một System Prompt cứng rắn (Guardrails). AI được chỉ thị rõ chỉ được dùng các chứng nhận y tế có sẵn trong khối `<APPROVED_FACTS>` (được truyền vào từ hệ thống). Nếu Marketer ép thêm chứng chỉ bên ngoài, AI phải kiên quyết từ chối bằng một kịch bản từ chối mẫu.
 
 ---
 
 ## 2. Vì sao sửa ở lớp chỉ dẫn AI?
 
-[Chọn 1-2 ý đúng với giải pháp của nhóm.]
-
-- AI đang trả lời quá tự tin khi thiếu nguồn.
-- AI đang chiều theo giả định sai của người dùng.
-- AI cần luật rõ: khi nào trả lời, khi nào từ chối, khi nào chuyển sang người thật.
-- Có thể sửa nhanh bằng prompt trước khi thay đổi hệ thống lớn hơn.
+- AI đang chiều theo giả định sai của người dùng (Sycophancy) khi bị Marketer gây áp lực KPI hoặc lấy cớ "tôi chịu mọi trách nhiệm".
+- AI cần luật rõ: Tuyệt đối không được hallucinate các thực thể thuộc nhóm "Medical Claims" & "Certificates".
 
 **Hành động phòng vệ chính**:
 
-- [ ] Ngăn câu trả lời sai ngay từ đầu
+- [x] Ngăn câu trả lời sai ngay từ đầu
 - [ ] Bắt buộc nêu nguồn khi nói về thông tin quan trọng
-- [ ] Từ chối trả lời khi thiếu căn cứ
+- [x] Từ chối trả lời khi thiếu căn cứ
 - [ ] Chuyển người thật khi vượt phạm vi
 
 ---
@@ -57,20 +49,22 @@ Demo cần có:
 
 **Có thể gây vấn đề gì?**
 
-[Ví dụ: AI từ chối quá nhiều, câu trả lời cứng, trải nghiệm chậm hơn vì phải kiểm tra nguồn.]
+**Có thể gây vấn đề gì?**
+
+AI có thể trở nên quá cứng nhắc (False Positive) và từ chối luôn cả những prompt vô hại, khiến trải nghiệm sử dụng chatbot Content bị giảm đi.
 
 **Nhóm giảm vấn đề đó bằng cách nào?**
 
-[Ví dụ: chỉ bắt buộc nguồn với thông tin rủi ro cao; tách từ chối mềm và từ chối cứng; kiểm tra lại bằng bộ tình huống.]
+Chỉ áp dụng Guardrail nghiêm ngặt cho 2 loại thực thể: "Chứng chỉ" và "Cam kết chữa bệnh". Với các yêu cầu khác như đổi văn phong (Vui nhộn, Trang trọng), đổi đối tượng mục tiêu, AI vẫn được quyền sáng tạo tự do 100%.
 
 ---
 
 ## 5. Checklist trước khi nộp
 
-- [ ] Luật viết đủ cụ thể để AI làm theo.
-- [ ] Có mẫu câu khi AI không có đủ thông tin.
-- [ ] Có ví dụ cho tình huống dễ sai.
-- [ ] Có thử lại bằng tình huống trong Bài 1.
-- [ ] Không dùng prompt như cách duy nhất nếu lỗi nằm ở dữ liệu hoặc quy trình.
+- [x] Luật viết đủ cụ thể để AI làm theo.
+- [x] Có mẫu câu khi AI không có đủ thông tin.
+- [x] Có ví dụ cho tình huống dễ sai.
+- [x] Có thử lại bằng tình huống trong Bài 1.
+- [x] Không dùng prompt như cách duy nhất nếu lỗi nằm ở dữ liệu hoặc quy trình.
 
-**Người phụ trách**: [Tên thành viên]
+**Người phụ trách**: Nguyễn Thị Tuyết

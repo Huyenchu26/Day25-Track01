@@ -6,36 +6,30 @@ demo: ./demo.md
 
 # card.md — Lớp giao diện
 
-**Tình huống xử lý**: T-__  
+**Tình huống xử lý**: T-01 (Bịa chứng chỉ y tế)  
 Xem `../../1-map-and-format.md` Phần A.
 
 ---
 
 ## 1. Giải pháp là gì?
 
-[Viết 2-3 câu. Nói rõ màn hình sẽ thay đổi gì để giảm rủi ro.]
-
-Ví dụ:
-
-> Khi AI trả lời về hạn nộp học bổng, giao diện hiện nhãn “Đã kiểm tra từ nguồn chính thức” hoặc “Chưa có nguồn xác minh”. Nếu thiếu nguồn, màn hình hiện nút chuyển cho tư vấn viên.
+Giao diện soạn thảo sẽ làm nổi bật (highlight) các chứng chỉ y tế hoặc công dụng bằng các nhãn màu (Xanh: Đã kiểm chứng từ PIM DB; Vàng: Chưa xác minh). 
+Khi AI từ chối sinh nội dung bịa đặt do Marketer ép buộc, giao diện sẽ hiển thị một Alert Box cảnh báo rủi ro pháp lý kèm nút "Gửi yêu cầu phê duyệt lên Phòng Pháp chế" (Escalation).
 
 ---
 
 ## 2. Vì sao sửa ở lớp giao diện?
 
-[Chọn 1-2 ý đúng với giải pháp của nhóm.]
-
-- Người dùng dễ tin câu trả lời của AI quá mức.
-- Rủi ro xảy ra ở khoảnh khắc người dùng đọc câu trả lời.
-- Giao diện cần làm rõ: thông tin nào đã kiểm tra, thông tin nào chưa chắc.
-- Nếu prompt hoặc dữ liệu vẫn sót lỗi, giao diện là lớp chặn cuối.
+- Người dùng dễ tin câu trả lời của AI quá mức (Marketer thấy AI viết mượt nên tin là có thật).
+- Rủi ro xảy ra ở khoảnh khắc người dùng copy/paste bài viết đi publish.
+- Giao diện cần làm rõ: chứng chỉ nào là thật (có trong DB), chứng chỉ nào là ảo.
 
 **Hành động phòng vệ chính**:
 
-- [ ] Thông báo rõ giới hạn
-- [ ] Phát hiện dấu hiệu thiếu nguồn
-- [ ] Chuyển người thật khi cần
-- [ ] Giúp người dùng kiểm tra lại nguồn
+- [x] Thông báo rõ giới hạn
+- [x] Phát hiện dấu hiệu thiếu nguồn
+- [x] Chuyển người thật khi cần
+- [x] Giúp người dùng kiểm tra lại nguồn
 
 ---
 
@@ -45,7 +39,7 @@ Ví dụ:
 
 **Định dạng demo**:
 
-- [ ] Phác thảo màn hình
+- [x] Phác thảo màn hình (ASCII UI)
 - [ ] Luồng màn hình
 - [ ] Bản HTML đơn giản
 - [ ] Ảnh hoặc link prototype
@@ -63,20 +57,20 @@ Ví dụ:
 
 **Có thể gây vấn đề gì?**
 
-[Ví dụ: màn hình rối hơn, người dùng thấy bị làm phiền, thao tác chậm hơn.]
+Làm giao diện soạn thảo (Editor) bị rối mắt bởi quá nhiều nhãn màu (badges). Marketer có thể cảm thấy phiền phức khi bị AI từ chối và cản trở luồng công việc (giảm tốc độ tạo content).
 
 **Nhóm giảm vấn đề đó bằng cách nào?**
 
-[Ví dụ: chỉ hiện cảnh báo khi câu trả lời có rủi ro cao; dùng nhãn ngắn; đưa chi tiết vào nút mở rộng.]
+Chỉ highlight các thực thể nhạy cảm (Medical Claims, Certificates, Percentages). Thông báo từ chối được thiết kế ngắn gọn, không lên mặt dạy đời, và luôn cung cấp nút "Gửi Legal duyệt" để Marketer thấy họ vẫn có đường lui chứ không bị chặn đứng hoàn toàn.
 
 ---
 
 ## 5. Checklist trước khi nộp
 
-- [ ] Giải pháp gắn đúng với một rủi ro chính.
-- [ ] Demo nhìn vào là hiểu vấn đề được chặn ở đâu.
-- [ ] Có đủ trạng thái bình thường và trạng thái lỗi.
-- [ ] Có cách chuyển sang người thật khi AI không nên tự xử lý.
-- [ ] Câu chữ trong giao diện ngắn, không đổ hết trách nhiệm cho người dùng.
+- [x] Giải pháp gắn đúng với một rủi ro chính.
+- [x] Demo nhìn vào là hiểu vấn đề được chặn ở đâu.
+- [x] Có đủ trạng thái bình thường và trạng thái lỗi.
+- [x] Có cách chuyển sang người thật khi AI không nên tự xử lý.
+- [x] Câu chữ trong giao diện ngắn, không đổ hết trách nhiệm cho người dùng.
 
-**Người phụ trách**: [Tên thành viên]
+**Người phụ trách**: Chu Thị Ngọc Huyền
