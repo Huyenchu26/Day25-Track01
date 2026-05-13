@@ -19,6 +19,7 @@ Mục tiêu: mỗi thành viên mở rộng từ 5 tình huống ban đầu lên
 | R-01 | 02/2024 | Air Canada | Chatbot tự bịa ra chính sách hoàn tiền vé máy bay không tồn tại, khiến tòa án yêu cầu hãng phải bồi thường. Lỗi: Hallucination. (Ngọc Huyền) | [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know), [CanLII](https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html) | High | Có |
 | R-02 | 01/2023 | CNET | Sử dụng AI để tự động viết bài PR tài chính, AI bịa ra nhiều thông tin sai lệch về lãi suất, gây nhầm lẫn lớn. Lỗi: Hallucination. (Tuyết) | [The Verge](https://www.theverge.com/2023/1/17/23558580/cnet-ai-churn-zero-ad-revenue) | High | Có |
 | R-03 | 06/2023 | NEDA | Chatbot Tessa tự bịa ra lời khuyên giảm cân cực đoan cho bệnh nhân rối loạn ăn uống thay vì hỗ trợ tâm lý. Lỗi: Harmful advice. (Quang Linh) | [WSJ](https://www.wsj.com/articles/chatbot-tessa-national-eating-disorders-association-ai-6b0e0a2f), [NYT](https://www.nytimes.com/2023/06/08/well/eat/national-eating-disorders-association-chatbot-tessa.html) | Critical | Có |
+| R-04 | 04/2025 | Tập đoàn Chị Em Rọt | Quảng cáo lừa dối sản phẩm kẹo rau Kera (quảng cáo 1 viên kẹo bằng 1 đĩa rau) nhưng thực chất chứa sorbitol (thuốc xổ) và không có chất xơ. Công ty bị khởi tố vì sản xuất hàng giả. Lỗi: False Advertising. (Quang Linh) | [Tuổi Trẻ](https://tuoitre.vn), [Thanh Niên](https://thanhnien.vn) | Critical | Có |
 
 ---
 
