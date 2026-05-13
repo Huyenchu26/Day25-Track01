@@ -49,22 +49,20 @@ Day25-MãNhóm/                                       ← kho GitHub công khai
 
 Sao chép mẫu này vào `README.md` ở gốc kho bài và điền:
 
-```markdown
-# Day 25 — Chủ đề [N]: [Tên chủ đề]
+# Day 25 — Chủ đề 05: Pipeline viết nội dung marketing
 
 ## Thành viên nhóm
 
 | # | Mã học viên | Họ tên đầy đủ |
 |---|-------------|---------------|
-| 1 | A20-XXXXX   | Nguyễn Văn A  |
-| 2 | A20-XXXXX   | Trần Thị B    |
-| 3 | A20-XXXXX   | Lê Văn C      |
+| 1 | 2A202600015 | Chu Thị Ngọc Huyền |
+| 2 | 2A202600215 | Nguyễn Thị Tuyết |
+| 3 | 2A202600466 | Hứa Quang Linh |
 
 ## Kết quả cuối
 
 - 🎯 [Bộ kiểm thử cuối](./worksheet/01-test-set-review/3-FINAL-test-set-eval-plan.md)
 - 🎯 [Thiết kế 3 lớp giải pháp](./worksheet/02-solution-design/1-map-and-format.md) + [artifact/](./worksheet/02-solution-design/artifact/)
-```
 
 ### Các bước nộp
 
